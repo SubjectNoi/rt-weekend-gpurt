@@ -1,0 +1,3 @@
+/home/zhliu/rt-in-one-weekend-gpurt/build/CMakeFiles/main.dir
+/home/zhliu/rt-in-one-weekend-gpurt/build/CMakeFiles/edit_cache.dir
+/home/zhliu/rt-in-one-weekend-gpurt/build/CMakeFiles/rebuild_cache.dir
