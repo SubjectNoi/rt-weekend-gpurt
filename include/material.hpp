@@ -45,10 +45,10 @@ public:
 
 class dielectric : public material {
 public:
-    dielectric(double index_of_refraction) : ir(index_of_refraction) {}
+    dielectric(double index_of_refraction, double _r=1.0, double _g=1.0, double _b=1.0) : ir(index_of_refraction), r(_r), g(_g), b(_b) {}
 
     virtual bool scatter(const ray& r_in, const hit_record& rec, color& attenuation, ray& scattered) const override {
-        attenuation = color(1.0, 1.0, 1.0);
+        attenuation = color(r, g, b);
         double refraction_ratio = rec.front_face ? (1.0 / ir) : ir; // eta * eta' = 1 for two faces
         vec3 unit_direction = unit_vector(r_in.direction());
         
@@ -68,6 +68,7 @@ public:
     }
 public:
     double ir;
+    double r, g, b;
 private:
     static double reflectance(double cosine, double ref_idx) {
         auto r0 = (1 - ref_idx) / (1 + ref_idx);

@@ -5,7 +5,8 @@
 #include "camera.hpp"
 #include "material.hpp"
 #include <iostream>
-#include <omp.h>
+#include <fstream>
+//#include <omp.h>
 
 double hit_sphere(const point3& center, double radius, const ray& r) {
     vec3 oc = r.origin() - center;
@@ -38,7 +39,7 @@ color ray_color(const ray& r, const hittable& world, int depth) {
     }
     vec3 unit_direction = unit_vector(r.direction());
     auto t = 0.5 * (unit_direction.y() + 1.0);
-    return (1.0 - t) * color(1.0, 1.0, 1.0) + t * color(0.5, 0.7, 1.0);
+    return (1.0 - t) * color(1.0, 1.0, 1.0) + t * color(0.4, 0.6, 1.0);
 }
 
 hittable_list random_scene() {
@@ -46,38 +47,40 @@ hittable_list random_scene() {
     auto ground_material = make_shared<lambertian>(color(0.5, 0.5, 0.5));
     world.add(make_shared<sphere>(point3(0, -1000, 0), 1000, ground_material));
 
-    // for (int a = -11; a < 11; a++) {
-    //     for (int b = -11; b < 11; b++) {
-    //         auto choose_material = random_double();
-    //         point3 center(a + 0.9 * random_double(), 0.2, b + 0.9 * random_double());
-    //         if ((center - point3(4, 0.2, 0)).length() > 0.9) {
-    //             shared_ptr<material> sphere_material;
-    //             if (choose_material < 0.5) {
-    //                 auto albedo = color::random();
-    //                 sphere_material = make_shared<lambertian>(albedo);
-    //                 world.add(make_shared<sphere>(center, 0.2, sphere_material));
-    //             }
-    //             else if (choose_material < 0.75) {
-    //                 auto albedo = color::random(0.5, 1.0);
-    //                 auto fuzz = random_double(0.0, 0.5);
-    //                 sphere_material = make_shared<metal>(albedo, fuzz);
-    //                 world.add(make_shared<sphere>(center, 0.2, sphere_material));
-    //             }
-    //             else {
-    //                 sphere_material = make_shared<dielectric>(1.5);
-    //                 if (random_double() < 0.5) {
-    //                     world.add(make_shared<sphere>(center, -0.19, sphere_material));
-    //                 }
-    //                 world.add(make_shared<sphere>(center, 0.2, sphere_material));
-    //             }
-    //         }
-    //     }
-    // }
+    for (int a = -11; a < 11; a++) {
+        for (int b = -11; b < 11; b++) {
+            auto choose_material = random_double();
+            point3 center(a + 0.9 * random_double(), 0.2, b + 0.9 * random_double());
+            if ((center - point3(4, 0.2, 0)).length() > 0.9) {
+                shared_ptr<material> sphere_material;
+                if (choose_material < 0.5) {
+                    auto albedo = color::random() * color::random();
+                    sphere_material = make_shared<lambertian>(albedo);
+                    world.add(make_shared<sphere>(center, 0.2, sphere_material));
+                }
+                else if (choose_material < 0.75) {
+                    auto albedo = color::random(0.5, 1.0);
+                    auto fuzz = random_double(0.0, 0.25);
+                    sphere_material = make_shared<metal>(albedo, fuzz);
+                    world.add(make_shared<sphere>(center, 0.2, sphere_material));
+                }
+                else {
+                    sphere_material = make_shared<dielectric>(1.5, 1.0, 0.78, 0.86);
+                    if (random_double() < 0.5) {
+                        world.add(make_shared<sphere>(center, -0.2 * 0.99, sphere_material));
+                    }
+                    world.add(make_shared<sphere>(center, 0.2, sphere_material));
+                }
+            }
+        }
+    }
 
     auto material1 = make_shared<dielectric>(1.5);
     world.add(make_shared<sphere>(point3(0, 1, 0), 1.0, material1));
+    world.add(make_shared<sphere>(point3(0, 1, 0), -0.99, material1));
 
-    auto material2 = make_shared<lambertian>(color(0.4, 0.2, 0.1));
+    // auto material2 = make_shared<lambertian>(color(0.4, 0.2, 0.1));
+    auto material2 = make_shared<dielectric>(1.1);
     world.add(make_shared<sphere>(point3(-4, 1, 0), 1.0, material2));
 
     auto material3 = make_shared<metal>(color(0.7, 0.6, 0.5), 0.0);
@@ -109,25 +112,9 @@ int main(int argc, char** argv) {
     auto dist_to_focus = 10.0;
     auto aperture = 0.1;
     camera cam(look_from, look_at, vup, 30, aspect_ratio, aperture, dist_to_focus);
-    omp_set_num_threads(64);
-    std::cout << "P3\n" << image_width << ' ' << image_height << "\n255\n";
-    // #pragma omp parallel for
-    // for (int j = image_height - 1; j >= 0; --j) {
-    //     for (int i = 0; i < image_width; ++i) {
-    //         color pixel_color(0, 0, 0);
-    //         for (int s = 0; s < samples_per_pixel; s++) {
-    //             auto u = (i + random_double()) / (image_width - 1);
-    //             auto v = (j + random_double()) / (image_height - 1);
-    //             ray r = cam.get_ray(u, v);
-    //             pixel_color += ray_color(r, world, max_depth);
-    //         }
-    //         // write_color(std::cout, pixel_color, samples_per_pixel);
-    //         auto pc = get_color(pixel_color, samples_per_pixel);
-    //         img[j][i][0] = pc[0];
-    //         img[j][i][1] = pc[1];
-    //         img[j][i][2] = pc[2];
-    //     }
-    // }
+    // omp_set_num_threads(64);
+    // std::cout << "P3\n" << image_width << ' ' << image_height << "\n255\n";
+
     color **pixel_colors;
     pixel_colors = new color* [image_height];
     for (int j = 0; j < image_height; j++) pixel_colors[j] = new color [image_width];
@@ -137,7 +124,7 @@ int main(int argc, char** argv) {
         }
     }
     for (int s = 0; s < samples_per_pixel; s++) {
-        #pragma omp parallel for
+        // #pragma omp parallel for
         for (int j = image_height - 1; j >= 0; j--) {
             for (int i = 0; i < image_width; i++) {
                 auto u = (i + random_double()) / (image_width - 1);
@@ -150,14 +137,25 @@ int main(int argc, char** argv) {
                 img[j][i][2] = pc[2];
             }
         }
-        #pragma omp barrier
-    }
-    for (int j = image_height - 1; j >= 0; --j) {
-        for (int i = 0; i < image_width; ++i) {
-            std::cout << static_cast<int>(256 * clamp(img[j][i][0], 0.0, 0.999)) << ' '
-                      << static_cast<int>(256 * clamp(img[j][i][1], 0.0, 0.999)) << ' '
-                      << static_cast<int>(256 * clamp(img[j][i][2], 0.0, 0.999)) << '\n';
+        std::ofstream fout("/Users/zihanliu/workspace/rt-weekend-gpurt/render_output/img_" + std::to_string(s) + ".ppm", std::ios::out);
+        fout << "P3\n" << image_width << ' ' << image_height << "\n255\n";
+        for (int j = image_height - 1; j >= 0; j--) {
+            for (int i = 0; i < image_width; i++) {
+                fout << static_cast<int>(256 * clamp(img[j][i][0], 0.0, 0.999)) << ' '
+                     << static_cast<int>(256 * clamp(img[j][i][1], 0.0, 0.999)) << ' '
+                     << static_cast<int>(256 * clamp(img[j][i][2], 0.0, 0.999)) << '\n';
+            }
         }
+        fout.close();
+        std::cout << s << std::endl;
+        // #pragma omp barrier
     }
+    // for (int j = image_height - 1; j >= 0; --j) {
+    //     for (int i = 0; i < image_width; ++i) {
+    //         std::cout << static_cast<int>(256 * clamp(img[j][i][0], 0.0, 0.999)) << ' '
+    //                   << static_cast<int>(256 * clamp(img[j][i][1], 0.0, 0.999)) << ' '
+    //                   << static_cast<int>(256 * clamp(img[j][i][2], 0.0, 0.999)) << '\n';
+    //     }
+    // }
     return 0;
 }
