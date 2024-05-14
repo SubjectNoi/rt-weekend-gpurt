@@ -370,8 +370,6 @@ CMakeFiles/main.dir/main.cpp.o
  /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/vector
  /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__bit_reference
  /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__split_buffer
- /Users/zihanliu/workspace/rt-weekend-gpurt/include/ray.hpp
- /Users/zihanliu/workspace/rt-weekend-gpurt/include/vec3.hpp
  /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/iostream
  /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/ios
  /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__locale
@@ -428,12 +426,23 @@ CMakeFiles/main.dir/main.cpp.o
  /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/sys/_types/_fsfilcnt_t.h
  /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/_types/_nl_item.h
  /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__bsd_locale_defaults.h
+ /Users/zihanliu/workspace/rt-weekend-gpurt/include/ray.hpp
+ /Users/zihanliu/workspace/rt-weekend-gpurt/include/vec3.hpp
  /Users/zihanliu/workspace/rt-weekend-gpurt/include/color.hpp
  /Users/zihanliu/workspace/rt-weekend-gpurt/include/hittable_list.hpp
  /Users/zihanliu/workspace/rt-weekend-gpurt/include/hittable.hpp
+ /Users/zihanliu/workspace/rt-weekend-gpurt/include/aabb.hpp
  /Users/zihanliu/workspace/rt-weekend-gpurt/include/sphere.hpp
+ /Users/zihanliu/workspace/rt-weekend-gpurt/include/moving_sphere.hpp
  /Users/zihanliu/workspace/rt-weekend-gpurt/include/camera.hpp
  /Users/zihanliu/workspace/rt-weekend-gpurt/include/material.hpp
+ /Users/zihanliu/workspace/rt-weekend-gpurt/include/texture.hpp
+ /Users/zihanliu/workspace/rt-weekend-gpurt/include/perlin.hpp
+ /Users/zihanliu/workspace/rt-weekend-gpurt/include/stb_image.h
+ /Users/zihanliu/workspace/rt-weekend-gpurt/include/bvh.hpp
+ /Users/zihanliu/workspace/rt-weekend-gpurt/include/aarect.hpp
+ /Users/zihanliu/workspace/rt-weekend-gpurt/include/box.hpp
+ /Users/zihanliu/workspace/rt-weekend-gpurt/include/constant_medium.hpp
  /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/fstream
  /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/filesystem
  /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/stack

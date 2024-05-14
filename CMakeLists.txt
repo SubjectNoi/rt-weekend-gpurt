@@ -1,8 +1,6 @@
 cmake_minimum_required(VERSION 3.19)
 project(rt-weekend-gpurt)
-# find_package(OpenMP REQUIRED)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -O2 -pg -w")
 set(ROOT_DIR /Users/zihanliu/workspace/rt-weekend-gpurt)
 include_directories(${ROOT_DIR}/include)
 add_executable(main main.cpp)
-# target_link_libraries(main OpenMP::OpenMP_CXX)

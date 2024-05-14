@@ -5,6 +5,8 @@
 #include <limits>
 #include <memory>
 #include <random>
+#include <algorithm>
+#include <iostream>
 
 using std::shared_ptr;
 using std::make_shared;
@@ -27,6 +29,14 @@ inline double random_double(double min, double max) {
     static std::uniform_real_distribution<double> distribution(min, max);
     static std::mt19937 generator;
     return distribution(generator);
+}
+
+inline int random_int(int min, int max) {
+    static std::uniform_int_distribution<int> distribution(min, max + 1);    
+    static std::mt19937 generator;
+    int res = distribution(generator);
+    return res;
+
 }
 
 inline double clamp(double x, double min, double max) {

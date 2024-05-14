@@ -369,8 +369,6 @@ CMakeFiles/main.dir/main.cpp.o: ../main.cpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/vector \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__bit_reference \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__split_buffer \
-  ../include/ray.hpp \
-  ../include/vec3.hpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/iostream \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/ios \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__locale \
@@ -427,12 +425,23 @@ CMakeFiles/main.dir/main.cpp.o: ../main.cpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/sys/_types/_fsfilcnt_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/_types/_nl_item.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__bsd_locale_defaults.h \
+  ../include/ray.hpp \
+  ../include/vec3.hpp \
   ../include/color.hpp \
   ../include/hittable_list.hpp \
   ../include/hittable.hpp \
+  ../include/aabb.hpp \
   ../include/sphere.hpp \
+  ../include/moving_sphere.hpp \
   ../include/camera.hpp \
   ../include/material.hpp \
+  ../include/texture.hpp \
+  ../include/perlin.hpp \
+  ../include/stb_image.h \
+  ../include/bvh.hpp \
+  ../include/aarect.hpp \
+  ../include/box.hpp \
+  ../include/constant_medium.hpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/fstream \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/filesystem \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/stack \
@@ -448,13 +457,23 @@ CMakeFiles/main.dir/main.cpp.o: ../main.cpp \
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/filesystem:
 
+../include/box.hpp:
+
+../include/aarect.hpp:
+
+../include/bvh.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/fstream:
+
+../include/texture.hpp:
 
 ../include/material.hpp:
 
 ../include/camera.hpp:
 
 ../include/sphere.hpp:
+
+../include/aabb.hpp:
 
 ../include/hittable.hpp:
 
@@ -481,6 +500,12 @@ CMakeFiles/main.dir/main.cpp.o: ../main.cpp \
 /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/sys/_types/_blksize_t.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/sys/_types/_u_short.h:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__debug:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/sys/qos.h:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/sys/_types/_u_char.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/locale:
 
@@ -537,6 +562,10 @@ CMakeFiles/main.dir/main.cpp.o: ../main.cpp \
 ../include/ray.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__algorithm/shift_right.h:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__functional/unary_function.h:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/sys/types.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__algorithm/shift_left.h:
 
@@ -722,17 +751,13 @@ CMakeFiles/main.dir/main.cpp.o: ../main.cpp \
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__functional/binder1st.h:
 
+../include/stb_image.h:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/sys/_types/_mach_port_t.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__algorithm/search_n.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__algorithm/any_of.h:
-
-/Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/sys/_types/_u_char.h:
-
-/Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__debug:
-
-/Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/sys/qos.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/sys/_types/_errno_t.h:
 
@@ -800,6 +825,8 @@ CMakeFiles/main.dir/main.cpp.o: ../main.cpp \
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/climits:
 
+../include/moving_sphere.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/ratio:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__algorithm/copy.h:
@@ -844,10 +871,6 @@ CMakeFiles/main.dir/main.cpp.o: ../main.cpp \
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__iterator/front_insert_iterator.h:
 
-/Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/limits.h:
-
-../include/vec3.hpp:
-
 /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__algorithm/sort.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__iterator/distance.h:
@@ -868,6 +891,8 @@ CMakeFiles/main.dir/main.cpp.o: ../main.cpp \
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__algorithm/mismatch.h:
 
+../include/constant_medium.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/string.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__functional/hash.h:
@@ -879,6 +904,10 @@ CMakeFiles/main.dir/main.cpp.o: ../main.cpp \
 /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/_types/_intmax_t.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/string.h:
+
+../include/vec3.hpp:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/limits.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/_wctype.h:
 
@@ -1172,6 +1201,8 @@ CMakeFiles/main.dir/main.cpp.o: ../main.cpp \
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/limits:
 
+../include/perlin.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/_types/_uint16_t.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__function_like.h:
@@ -1205,10 +1236,6 @@ CMakeFiles/main.dir/main.cpp.o: ../main.cpp \
 /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stdint.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/_types/_wctype_t.h:
-
-/Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/sys/types.h:
-
-/Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__functional/unary_function.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__algorithm/search.h:
 
